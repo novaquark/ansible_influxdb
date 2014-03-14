@@ -5,7 +5,7 @@ It can manage databases and users.
 
 ## Release
 
-FIXME
+You can download the lastest version for [GNU/Linux amd64 here](https://github.com/novaquark/ansible_influxdb/releases/download/0.1.0/ansible_influxdb).
 
 ## Synopsis
 
