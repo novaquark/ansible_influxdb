@@ -5,7 +5,7 @@ It can manage databases and users.
 
 ## Release
 
-You can download the lastest version for [GNU/Linux amd64 here](https://github.com/novaquark/ansible_influxdb/releases/download/0.1.0/ansible_influxdb).
+You can download the lastest version for [GNU/Linux amd64 here](https://github.com/novaquark/ansible_influxdb/releases/download/0.2.0/ansible_influxdb).
 
 ## Synopsis
 
@@ -50,6 +50,13 @@ Without any parameter, returns some facts.
     <td>root</td>
     <td></td>
     <td>The username used to authenticate with</td>
+  </tr>
+  <tr>
+    <td>replication</td>
+    <td>no</td>
+    <td></td>
+    <td></td>
+    <td>When creating a new database, assign a replicationFactor</td>
   </tr>
   <tr>
     <td>password</td>

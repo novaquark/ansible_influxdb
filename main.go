@@ -181,7 +181,13 @@ func main() {
 				ret.Changed = true
 			}
 		} else if state, present := args["state"]; present && state == "present" && ! db_exists {
-			err := client.CreateDatabase(dbname)
+			var err error;
+
+			if replication, present := args["replication"]; present {
+				err = client.CreateReplicatedDatabase(dbname, replication)
+			} else {
+				err = client.CreateDatabase(dbname)
+			}
 
 			if err != nil {
 				fail(err)
