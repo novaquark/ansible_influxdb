@@ -16,7 +16,7 @@ import (
 	"io/ioutil"
 	"strings"
 	"encoding/json"
-	influxClient "github.com/influxdb/influxdb-go"
+	influxClient "github.com/influxdb/influxdb/client"
 )
 
 type ReturnCh struct {
@@ -123,7 +123,7 @@ func main() {
 					client.UpdateClusterAdmin(username, password)
 				}
 			}
-			
+
 		} else if dbname, present := args["database"]; present && uType == "user" {
 			u, _ := client.GetDatabaseUserList(dbname)
 			for _, v := range(u) {
@@ -184,7 +184,11 @@ func main() {
 			var err error;
 
 			if replication, present := args["replication"]; present {
-				err = client.CreateReplicatedDatabase(dbname, replication)
+				// err = client.CreateReplicatedDatabase(dbname, replication)
+				err = client.CreateDatabase(dbname)
+				if err == nil {
+					err = fmt.Errorf("Can't set replication factor (%d), not supported by client", replication)
+				}
 			} else {
 				err = client.CreateDatabase(dbname)
 			}
